@@ -1,5 +1,22 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+# AutomatGuru Web v3
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fyour-username%2Fguru_web_v3)
+
+## Deployment
+
+### Common Fixes for "404 Not Found" on Vercel
+1. **Check Root Directory**: If you are deploying a subdirectory, ensure `Root Directory` in Vercel Project Settings is set to `.` (or empty) if the `package.json` is in the root.
+2. **Framework Preset**: Ensure Vercel Settings > Build & Development Settings > Framework Preset is set to **Next.js**.
+3. **Build Command**: Should be `next build`.
+4. **Output Directory**: Should be default (`.next`).
+
+### Manual Deployment
+1. Install Vercel CLI: `npm i -g vercel`
+2. Run deploy: `vercel`
+3. For production: `vercel --prod`
+
 ## Getting Started
 
 First, run the development server:
