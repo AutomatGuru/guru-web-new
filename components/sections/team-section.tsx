@@ -6,17 +6,19 @@ const team = [
     {
         name: "Marek Babka",
         role: "CEO & Founder",
-        image: null, // Placeholder or specific image if available
+        image: "/marek_.png",
+        imagePosition: "40% center",
     },
     {
         name: "Zdeněk Jungvirt",
         role: "CEO & Founder",
-        image: null,
+        image: "/zdenek_.png",
     },
     {
         name: "Claude Code",
         role: "Senior AI Developer",
-        image: null,
+        image: "/claude_.png",
+        imageScale: 0.7,
     },
 ];
 
@@ -40,10 +42,22 @@ export function TeamSection() {
                             className="group flex flex-col items-center"
                         >
                             <div className="w-48 h-48 rounded-full bg-neutral-900 border border-white/5 overflow-hidden mb-6 relative grayscale group-hover:grayscale-0 transition-all duration-500">
-                                {/* Since we don't have images, we use a gradient placeholder or Initials */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-neutral-800 to-neutral-950 flex items-center justify-center text-4xl font-thin text-white/10 group-hover:text-white/20 transition-colors">
-                                    {member.name.substring(0, 1)}
-                                </div>
+                                {member.image ? (
+                                    <Image
+                                        src={member.image}
+                                        alt={member.name}
+                                        fill
+                                        className="object-cover"
+                                        style={{
+                                            ...(member.imagePosition ? { objectPosition: member.imagePosition } : {}),
+                                            ...(member.imageScale ? { transform: `scale(${member.imageScale})` } : {}),
+                                        }}
+                                    />
+                                ) : (
+                                    <div className="absolute inset-0 bg-gradient-to-br from-neutral-800 to-neutral-950 flex items-center justify-center text-4xl font-thin text-white/10 group-hover:text-white/20 transition-colors">
+                                        {member.name.substring(0, 1)}
+                                    </div>
+                                )}
                             </div>
                             <h3 className="text-lg font-medium text-white mb-1">
                                 {member.name}

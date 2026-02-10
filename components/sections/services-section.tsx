@@ -13,9 +13,9 @@ const services = [
         icon: Bot,
     },
     {
-        title: "Prediktivní Analytika",
+        title: "Tvorba webů & e-shopů na míru",
         description:
-            "Využijte svá data k předvídání trendů a optimalizaci skladových zásob.",
+            "Moderní, rychlé a responzivní weby a e-shopy šité přesně na míru vašemu podnikání.",
         icon: LineChart,
     },
     {
