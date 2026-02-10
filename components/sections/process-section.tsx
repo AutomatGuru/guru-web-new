@@ -14,7 +14,7 @@ const steps = [
     {
         title: "Strategie",
         description:
-            "Navrhneme architekturu řešení, vybereme vhodné nástroje a spočítáme návratnost investice (ROI).",
+            "Navrhneme architekturu řešení a vybereme vhodné nástroje.",
         icon: Compass,
     },
     {
@@ -60,7 +60,7 @@ export function ProcessSection() {
                                     borderWidth={3}
                                 />
                                 <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border-0.75 border-white/10 bg-neutral-900/50 p-6 shadow-sm">
-                                    <div className="relative flex flex-1 flex-col justify-between gap-3">
+                                    <div className="relative flex flex-1 flex-col justify-start gap-3">
                                         <div className="w-fit rounded-lg border border-white/10 bg-neutral-800/50 p-2 relative z-20">
                                             <step.icon className="w-6 h-6 text-blue-400" />
                                         </div>

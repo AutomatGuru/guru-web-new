@@ -10,6 +10,8 @@ interface NavItem {
     name: string
     url: string
     icon: LucideIcon
+    onClick?: () => void
+    isButton?: boolean
 }
 
 interface NavBarProps {
@@ -34,14 +36,32 @@ export function NavBar({ items, className }: NavBarProps) {
     return (
         <div
             className={cn(
-                "fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-50 mb-6 sm:pt-6 pointer-events-none w-max",
+                "fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-50 mb-6 sm:pt-6 pointer-events-none max-w-[calc(100vw-1.5rem)] w-max",
                 className,
             )}
         >
-            <div className="flex items-center gap-3 bg-white/5 border border-white/10 backdrop-blur-lg py-2 px-2 rounded-full shadow-lg pointer-events-auto">
+            <div className="flex items-center gap-1.5 sm:gap-3 bg-white/5 border border-white/10 backdrop-blur-lg py-2 sm:py-2 px-2 sm:px-2 rounded-full shadow-lg pointer-events-auto">
                 {items.map((item) => {
                     const Icon = item.icon
                     const isActive = activeTab === item.name
+
+                    if (item.isButton) {
+                        return (
+                            <button
+                                key={item.name}
+                                onClick={item.onClick}
+                                className={cn(
+                                    "relative cursor-pointer text-sm sm:text-base font-semibold px-4 sm:px-6 py-2.5 sm:py-3 rounded-full transition-colors",
+                                    "text-white/80 hover:text-white hover:bg-white/10",
+                                )}
+                            >
+                                <span className="hidden md:inline">{item.name}</span>
+                                <span className="md:hidden">
+                                    <Icon size={22} strokeWidth={2.5} />
+                                </span>
+                            </button>
+                        )
+                    }
 
                     return (
                         <Link
@@ -49,14 +69,14 @@ export function NavBar({ items, className }: NavBarProps) {
                             href={item.url}
                             onClick={() => setActiveTab(item.name)}
                             className={cn(
-                                "relative cursor-pointer text-base font-semibold px-6 py-3 rounded-full transition-colors",
+                                "relative cursor-pointer text-sm sm:text-base font-semibold px-4 sm:px-6 py-2.5 sm:py-3 rounded-full transition-colors",
                                 "text-white/80 hover:text-white",
                                 isActive && "bg-white/10 text-white",
                             )}
                         >
                             <span className="hidden md:inline">{item.name}</span>
                             <span className="md:hidden">
-                                <Icon size={24} strokeWidth={2.5} />
+                                <Icon size={22} strokeWidth={2.5} />
                             </span>
                             {isActive && (
                                 <motion.div
