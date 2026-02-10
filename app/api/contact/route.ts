@@ -2,12 +2,18 @@ import { NextRequest, NextResponse } from "next/server";
 
 const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL;
 
-if (!SLACK_WEBHOOK_URL) {
-    throw new Error("SLACK_WEBHOOK_URL is not defined");
-}
+
 
 export async function POST(req: NextRequest) {
     try {
+        if (!SLACK_WEBHOOK_URL) {
+            console.error("SLACK_WEBHOOK_URL is not defined");
+            return NextResponse.json(
+                { error: "Server configuration error" },
+                { status: 500 }
+            );
+        }
+
         const { name, email, phone, message } = await req.json();
 
         if (!name || !email || !message) {
